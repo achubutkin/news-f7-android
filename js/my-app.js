@@ -27,25 +27,21 @@ myApp.onPageInit('category', function (page) {
 
     // Получить параметр из запроса
     var categoryId = page.query.categoryId,
-        category = JSON.parse(localStorage.getItem('categories'))[categoryId - 1];
+        category = getCategory(categoryId);
 
-    if (category) {
-        // Установить заголовок
-        $$(page.navbarInnerContainer).find('.center').text(category.title);
-        // Установить заголовок
-        $$(page.container).find('.content-block-title').text('Item`s by ' + category.title);
-    }
+    // Установить заголовок
+    $$(page.navbarInnerContainer).find('.center').text(category.title);
+    // Установить заголовок
+    $$(page.container).find('.content-block-title').text('Item`s by ' + category.title);
 });
 
 myApp.onPageAfterAnimation('category', function (page) {
     // Получить параметр из запроса
     var categoryId = page.query.categoryId,
-        category = JSON.parse(localStorage.getItem('categories'))[categoryId - 1];
+        category = getCategory(categoryId);
 
-    if (category) {
-        // Список элементов категории
-        getItems(category, page);
-    }
+    // Список элементов категории
+    getItems(category, page);
 });
 
 myApp.onPageInit('item', function (page) {
@@ -273,6 +269,13 @@ function checkBackHistory() {
     if (history.length > backCount + 1) {
         history.splice(1, 1); // удалить из истории переход, начиная со второго перехода, оставить основную страницу
     }    
+}
+
+function getCategory(categoryId) {
+    var categories = JSON.parse(localStorage.getItem('categories'));
+    for (var i = 0; i < categories.length; i++) {
+        if (categories[i].id === categoryId) return categories[i];
+    }
 }
 
 // Загрузить категории

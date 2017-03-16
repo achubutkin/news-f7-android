@@ -8,9 +8,11 @@
     req = function (path, success, error, retry) {
         if (retry === undefined) retry = rcount;
         return $$.ajax({
-            url: url + path + '?sign=' + localStorage.getItem('sign'), /* подписать запрос */
+            // Подписать запрос
+            url: !DEBUG || DEBUG === false ? url : 'api_debug/' + path + '?sign=' + localStorage.getItem('sign'), 
             success: success,
             error: function (xhr) {
+                if (!DEBUG || DEBUG === false) console.log(xhr);
                 if (retry > 0 && !(xhr.status === 403 && xhr.statusText === 'Forbidden')) {
                     req(path, success, error, retry -= 1);
                 } else {
@@ -23,11 +25,12 @@
     reqPOST = function (path, data, success, error, retry) {
         if (retry === undefined) retry = rcount;
         return $$.ajax({
-            url: url + path,
+            url: !DEBUG || DEBUG === false ? url : 'api/' + path,
             method: 'POST',
             data: data,
             success: success,
             error: function (xhr) {
+                if (!DEBUG || DEBUG === false) console.log(xhr);
                 if (retry > 0 && !(xhr.status === 403 && xhr.statusText === 'Forbidden')) {
                     reqPOST(path, data, success, error, retry - 1);
                 } else {

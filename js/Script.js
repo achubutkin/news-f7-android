@@ -1,26 +1,3 @@
-// Селектор
-var $$ = Dom7;
-
-// Инициализация приложения
-var myApp = new Framework7({
-    animateNavBackIcon: false,
-    material: true,
-    onPageInit: function (app, page) {
-        if (page.name === 'index') {
-            // Список последних элементов
-            getLastItems(page, true);
-        }
-    }
-});
-
-// Создать основное представление
-var mainView = myApp.addView('.view-main', {
-    // Enable dynamic Navbar
-    dynamicNavbar: false,
-    // Enable Dom Cache so we can use all inline pages
-    domCache: false
-});
-
 myApp.onPageInit('category', function (page) {
 
     checkBackHistory();

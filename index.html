@@ -25,12 +25,12 @@
                     <div data-page="panel-left" class="page">
                         <div class="navbar">
                             <div class="navbar-inner">
-                                <div class="center">Left Panel</div>
+                                <div class="center"></div>
                             </div>
                         </div>
                         <div class="page-content">
                             <div class="content-block-title">
-                                Categories
+                                Категории
                             </div>
                             <div class="list-block categories">
 
@@ -38,12 +38,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Right panel with cover effect-->
-        <div class="panel panel-right panel-cover">
-            <div class="content-block">
-                <p>Right panel content goes here</p>
             </div>
         </div>
         <!-- Views-->
@@ -83,12 +77,67 @@
                 </div>
             </div>
         </div>
+
+        <!-- Окно авторизации -->
+        <div class="login-screen">
+            <div class="view">
+                <div class="page">
+                    <div class="page-content login-screen-content">
+                        <div class="login-screen-title">
+                            Intra
+                        </div>
+                        <form>
+                            <div class="list-block">
+                                <ul>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">ИИН</div>
+                                            <div class="item-input">
+                                                <input type="text" name="iin" placeholder="ИИН">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Дата приема на работу</div>
+                                            <div class="item-input">
+                                                <input type="date" name="datein" />
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="content-block">
+                                <a href="#" class="button button-big">Авторизация</a></li>
+                            </div>
+                            <div class="content-block">
+                                <div class="list-block-label">
+                                    <div class="login-screen-preloader">
+                                        <div class="preloader"></div>
+                                    </div>
+                                    <span class="error"></span>
+                                </div>
+                                <div class="list-block-label">
+                                    <p>Для работников в Казахстане необходимо указать свой индивидуальный идентификационный номер (ИИН),
+                                    в Кыргызстане &mdash; номер документа удостоверяющего личность.</p>
+                                    <p>В поле Дата указать дату приема на работу в организацию (по трудовому договору).</p>
+                                    <p>ТОО &laquo;Apple City LLC&raquo;<br />v.0.0.1 09-03-2017</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script type="text/javascript">
             var DEBUG = true;
         </script>
         <!-- Path to Framework7 Library JS-->
         <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+        <!-- Path to your app API -->
+        <script type="text/javascript" src="js/intraapi.js"></script>
         <!-- Path to your app js-->
-        <script type="text/javascript" src="js/my-app.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
     </body>
 </html>

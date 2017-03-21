@@ -1,0 +1,20 @@
+{
+    "#value": [
+        {
+            "id": "1",
+            "parent_id": "1",
+            "title": "Категория, 1",
+            "alias": "categoryone",
+            "note": "",
+            "description": ""
+        },
+        {
+            "id": "2",
+            "parent_id": "1",
+            "title": "Категория, 2",
+            "alias": "categorytwo",
+            "note": "",
+            "description": ""
+        }
+    ]
+}

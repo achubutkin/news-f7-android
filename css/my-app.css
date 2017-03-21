@@ -86,6 +86,20 @@ div[class*="col-"] {
     font-size: 11px;
 }
 
+.login-screen-preloader {
+    opacity: 0;
+    overflow: hidden;
+    height: 0px;
+    transition: all .4s;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+.login-screen-preloader.in-display {
+    height: 38px;
+    opacity: 1;
+}
+
 /*
     Custom styles for AppleCity LLC brand colours 
 */

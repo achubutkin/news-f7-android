@@ -9,7 +9,7 @@
         if (retry === undefined) retry = rcount;
         return $$.ajax({
             // Подписать запрос
-            url: !DEBUG || DEBUG === false ? url : 'api_debug/' + path + '?sign=' + localStorage.getItem('sign'), 
+            url: (!DEBUG || DEBUG === false ? url : 'api_debug/') + path + (!DEBUG || DEBUG === false ? '' : '.json') + '?sign=' + localStorage.getItem('sign'),
             success: success,
             error: function (xhr) {
                 if (!DEBUG || DEBUG === false) console.log(xhr);
@@ -25,7 +25,7 @@
     reqPOST = function (path, data, success, error, retry) {
         if (retry === undefined) retry = rcount;
         return $$.ajax({
-            url: !DEBUG || DEBUG === false ? url : 'api/' + path,
+            url: url + path,
             method: 'POST',
             data: data,
             success: success,
@@ -63,12 +63,17 @@
 
         // Загрузка статьи
         loadArticle: function (articleId, success, error) {
-            return req('article/' + articleId, success, error);
+            return req('article' + articleId, success, error);
         },
 
-        // Авторизация
-        checkAuth: function (data, success, error) {
-            return reqPOST('auth/', data, success, error);
+        // Авторизация 
+        auth: function (data, success, error) {
+            return !DEBUG || DEBUG === false ? reqPOST('auth', data, success, error) : req('auth', success, error);
+        },
+
+        // Проверка подписи
+        checkSign: function (data, success, error) {
+            return !DEBUG || DEBUG === false ? reqPOST('checksign', data, success, error) : req('checksign', success, error);
         }
     };
 
